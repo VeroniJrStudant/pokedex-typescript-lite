@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 25,
+    "nome": "pikachu",
+    "tipos": [
+      "electric"
+    ],
+    "altura": 4,
+    "peso": 60
+  }
+]

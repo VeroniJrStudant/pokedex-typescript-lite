@@ -47,7 +47,7 @@ Antes de executar o projeto, é necessário ter instalado:
 Clone o repositório:
 
 ```bash
-git clone LINK_DO_REPOSITORIO
+git clone https://github.com/VeroniJrStudant/pokedex-typescript-lite
 ```
 
 Acesse a pasta do projeto:
@@ -110,7 +110,7 @@ pokedex-typescript-lite/
 │   ├── models/
 │   │   ├── Pokemon.ts
 │   │   ├── CatalogoPokemon.ts
-│   │   └── CustomErrors.ts
+│   │   └── CustomError.ts
 │   └── utils/
 │       └── textFormatters.ts
 │
@@ -282,52 +282,6 @@ Link do Kanban:
 
 https://app.asana.com/1/1217848314402019/project/1217848564139331/timeline/1217848805601259
 
-Colunas mínimas do enunciado: **Backlog** | **A Fazer** | **Em Andamento** | **Concluído**
-
-Cartões iguais às tarefas sugeridas na seção 4.4, mais versionamento (4.5) e o checklist de entrega (seção 6).
-
-### Backlog
-
-Melhorias listadas no próprio enunciado (não obrigatórias nesta entrega):
-
-- Exibir HP, ataque e defesa
-- Criar filtros por tipo de Pokémon
-- Criar uma API própria com Express
-
-### A Fazer
-
-- Criar repositório no GitHub
-- Configurar projeto Node com TypeScript
-- Criar package.json
-- Criar tsconfig.json
-- Criar src/main.ts
-- Criar interface PokemonResumo
-- Criar interface PokemonApiResponse
-- Criar função buscarPokemon
-- Usar fetch para consultar a PokeAPI
-- Tratar erro de Pokémon inexistente
-- Mapear resposta da API
-- Criar classe CatalogoPokemon
-- Criar método adicionar
-- Bloquear Pokémon duplicado
-- Criar método listar
-- Criar método remover
-- Usar pelo menos 3 métodos de array
-- Testar fluxo no main.ts
-- Atualizar README.md
-- Registrar exemplos de execução no README
-- Usar branches mínimas (`main`, `develop`, `feat/pokedex`, `docs/readme`)
-- Fazer commits no GitHub
-- Enviar links no AVA
-
-### Em Andamento
-
-- Criar quadro Kanban ou planejamento equivalente
-
-### Concluído
-
-_(vazio — arraste os cartões para cá quando você terminar cada tarefa no Asana)_
-
 ## Branches utilizadas
 
 - `main`
@@ -343,7 +297,7 @@ _(vazio — arraste os cartões para cá quando você terminar cada tarefa no As
 - `src/services/BoxService.ts`: lê e salva o catálogo em `pc_box.json`.
 - `src/models/Pokemon.ts`: interfaces do Pokémon resumido e da resposta da API.
 - `src/models/CatalogoPokemon.ts`: classe do catálogo em memória.
-- `src/models/CustomErrors.ts`: erros customizados da API e do arquivo local.
+- `src/models/CustomError.ts`: erros customizados da API e do arquivo local.
 - `src/utils/textFormatters.ts`: formatação das mensagens no terminal.
 - `pc_box.json`: base local do catálogo, iniciada com `[]`.
 

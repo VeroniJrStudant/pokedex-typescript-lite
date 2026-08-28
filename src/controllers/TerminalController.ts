@@ -38,7 +38,7 @@ export class TerminalController {
             if (opcao === "1") {
                 await this.buscarPokemon();
             } else if (opcao === "2") {
-                this.catalogo.listar();
+                this.catalogoPokemon.listar();
             } else if (opcao === "3") {
                 await this.removerPokemon();
             } else if (opcao === "4") {
@@ -63,14 +63,14 @@ export class TerminalController {
 
         const pokemon = await this.pokeApiService.buscarPokemon(nomeOuId);
         if (pokemon === null) {
-            retunr;
+            return;
         }
 
         const resposta = (await this.rl.question("Deseja adicionar ao catálogo? (s/n): ")).trim().toLowerCase();
 
         if (resposta === "s" || resposta === "sim") {
-            this.catalogo.adicionar(pokemon);
-            await this.boxService.salvar(this.catalogo.obterTodos())
+            this.catalogoPokemon.adicionar(pokemon);
+            await this.boxService.salvar(this.catalogoPokemon.obterTodos())
             return;
         }
         console.log("[AVISO] Pokémon não foi adicionado ao catálogo.");
@@ -85,8 +85,8 @@ export class TerminalController {
             return;
         }
 
-        this.catalogo.remover(id);
-        await this.boxService.salvar(this.catalogo.obterTodos());
+        this.catalogoPokemon.remover(id);
+        await this.boxService.salvar(this.catalogoPokemon.obterTodos());
     }
 }
 
