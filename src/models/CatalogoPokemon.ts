@@ -39,12 +39,12 @@ export class CatalogoPokemon {
         const existe =  this.pokemons.some((pokemon) => pokemon.id === id);
 
         if(!existe){
-            console.log("[AVISO] Nenhum Pókemon encontrado com esse ID");
+            console.log("[AVISO] Nenhum Pokémon encontrado com esse ID");
             return;
         };
 
         this.pokemons = this.pokemons.filter((pokemon) => pokemon.id !== id );
-        console.log("[OK] Pokémon removido com");
+        console.log("[OK] Pokémon removido do catálogo.");
     }
 
     obterTodos(): PokemonResumo[]{
