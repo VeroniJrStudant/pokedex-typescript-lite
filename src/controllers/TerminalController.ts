@@ -3,6 +3,7 @@ import {stdin as input, stdout as output } from "node:process";
 import {PokeApiService} from "../services/PokeApiService";
 import {BoxService} from "../services/BoxService";
 import {CatalogoPokemon} from "../models/CatalogoPokemon";
+import { montarMenu } from "../utils/textFormatters";
 
 export class TerminalController {
     private readonly rl: readline.Interface;
@@ -27,10 +28,7 @@ export class TerminalController {
         let continuar = true;
 
         while (continuar) {
-            console.log("1 - Buscar Pokémon");
-            console.log("2 - Listar Pokémon");
-            console.log("3 - Remove Pokémon");
-            console.log("4 - Sair");
+            console.log(montarMenu());
 
             const opcao = (await this.rl.question("Escolha uma opção: ")).trim();
             console.log("");
