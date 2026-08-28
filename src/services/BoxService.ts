@@ -1,16 +1,16 @@
 import {readFile, writeFile} from "node:fs/promises";
-import {PokemonResumo} from "../model/Pokemon";
-import {LocalBoxError} from "../model/CustomError";
+import {PokemonResumo} from "../models/Pokemon";
+import {LocalBoxError} from "../models/CustomError";
 
 export class BoxService {
 
     constructor(private readonly caminhoArquivo: string= "pc_box.json"){}
     
-    async carregar(): Promisse<PokemonResumo[]> {
+    async carregar(): Promise<PokemonResumo[]> {
 
         try {
             const conteudo = await readFile(this.caminhoArquivo, "utf-8");
-            const dados = JOSN.parse(conteudo) as PokemonResumo[];
+            const dados = JSON.parse(conteudo) as PokemonResumo[];
             return Array.isArray(dados) ? dados : [];
         }catch (erro) {
             if (erro instanceof Error && "code" in erro && erro.code === "ENOENT"){

@@ -1,13 +1,13 @@
-import * readline from "node:readline/promise";
+import * as readline from "node:readline/promises";
 import {stdin as input, stdout as output } from "node:process";
 import {PokeApiService} from "../services/PokeApiService";
 import {BoxService} from "../services/BoxService";
 import {CatalogoPokemon} from "../models/CatalogoPokemon";
 
 export class TerminalController {
-    private readonly rl: readline.Interface:
+    private readonly rl: readline.Interface;
 
-    cosntructor(
+    constructor(
         private readonly pokeApiService: PokeApiService,
         private readonly boxService: BoxService,
         private readonly catalogoPokemon: CatalogoPokemon,
@@ -19,44 +19,46 @@ export class TerminalController {
             crlfDelay: Infinity,
         });
     }
-}
 
-async iniciarMenu(): Promise<void> {
-   console.log("=== Pokédex TypeScript Lite ===");
+
+    async iniciarMenu(): Promise<void> {
+        console.log("=== Pokédex TypeScript Lite ===\n"); 
    
-   let continuar = true;
+        let continuar = true;
 
-    while (continue) {
-       console.log("1 - Buscar Pokémon");
-       console.log("2 - Listar Pokémon");
-       console.log("3 - Remove Pokémon");
-       console.log("4 - Sair");
+        while (continuar) {
+            console.log("1 - Buscar Pokémon");
+            console.log("2 - Listar Pokémon");
+            console.log("3 - Remove Pokémon");
+            console.log("4 - Sair");
 
-       const opcao = (await.this.rl.question("Escolha uma opção: ")).trim();
-       console.log("");
-        if (opcao === "1") {
-            await this.buscarPokemon();
-        }else if (opcao === "2") {
-            this.catalogo.listar();
-        }else if (opcao === "3") {
-            await this.removerPokemon();
-        }else if (opcao === "4") {
-            continue =  false;
-            console.log("Até a próxima, treinador!");
-        }else {
-            console.log("[AVISO] Opção inválida. Digite 1, 2, 3 ou 4.");
+            const opcao = (await this.rl.question("Escolha uma opção: ")).trim();
+            console.log("");
+
+            if (opcao === "1") {
+                await this.buscarPokemon();
+            } else if (opcao === "2") {
+                this.catalogo.listar();
+            } else if (opcao === "3") {
+                await this.removerPokemon();
+            } else if (opcao === "4") {
+                continuar =  false;
+                console.log("Até a próxima, treinador!");
+            } else {
+                console.log("[AVISO] Opção inválida. Digite 1, 2, 3 ou 4.");
+            }
+
+            console.log("");
         }
-
-        console.log("");
+        this.rl.close();
     }
-     this.rl.close();
 
     private async buscarPokemon(): Promise<void> {
         const nomeOuId = (await this.rl.question("Digite o nome ou ID do Pokémon: ")).trim();
 
         if (nomeOuId === "") {
-            console.log("[AVISO] Infome um nome ou ID para buscar");
-            return;
+        console.log("[AVISO] Infome um nome ou ID para buscar");
+        return;
         }
 
         const pokemon = await this.pokeApiService.buscarPokemon(nomeOuId);
@@ -87,3 +89,4 @@ async iniciarMenu(): Promise<void> {
         await this.boxService.salvar(this.catalogo.obterTodos());
     }
 }
+
