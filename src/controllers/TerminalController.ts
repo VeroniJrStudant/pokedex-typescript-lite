@@ -55,7 +55,7 @@ export class TerminalController {
         const nomeOuId = (await this.rl.question("Digite o nome ou ID do Pokémon: ")).trim();
 
         if (nomeOuId === "") {
-        console.log("[AVISO] Infome um nome ou ID para buscar");
+        console.log("[AVISO] Informe um nome ou ID para buscar");
         return;
         }
 
@@ -75,7 +75,7 @@ export class TerminalController {
     }
 
     private async removerPokemon(): Promise<void> {
-        const entrada = (await this.rl.question("Digite o ID do Pekémon: ")).trim();
+        const entrada = (await this.rl.question("Digite o ID do Pokémon: ")).trim();
         const id = Number(entrada);
 
         if (!Number.isInteger(id) || id <= 0) {
